@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\LifeCtrl.cs" />
      <Compile Include="Assets\Scripts\playerMoveCtrl.cs" />
      <Compile Include="Assets\Scripts\playerSliceCtrl.cs" />
+     <Compile Include="Assets\autoRetaliate.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

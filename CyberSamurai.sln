@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{806BDBF9-04D4-20A1-A8BD-DD45F9A86BC6}") = "CyberSamurai", "Assembly-CSharp.csproj", "{8A278B5C-E6E2-6E04-35A1-99A4ED229C10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A278B5C-E6E2-6E04-35A1-99A4ED229C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A278B5C-E6E2-6E04-35A1-99A4ED229C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A278B5C-E6E2-6E04-35A1-99A4ED229C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A278B5C-E6E2-6E04-35A1-99A4ED229C10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

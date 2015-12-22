@@ -30,7 +30,9 @@ public class patsySightControl : MonoBehaviour {
 		GameObject gi = GameObject.FindGameObjectWithTag ("gameInfo");
 		gameInfo giInfo = gi.GetComponent<gameInfo> ();
 		if (giInfo != null) {
-			m_allPlayers=giInfo.getPlayerList ();
+			m_allPlayers = giInfo.getPlayerList ();
+		} else {
+			Debug.Log ("player list module is null");
 		}
 	}
 	

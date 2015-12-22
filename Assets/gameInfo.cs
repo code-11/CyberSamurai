@@ -9,9 +9,14 @@ public class gameInfo : MonoBehaviour {
 		return m_playerList;
 	}
 
+	void Awake(){
+		m_playerList=new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
+		Debug.Log (m_playerList.Count);
+	}
+
 	// Use this for initialization
 	void Start () {
-		m_playerList=new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
+
 	}
 	
 	// Update is called once per frame

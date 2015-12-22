@@ -48,11 +48,13 @@
      <Compile Include="Assets\Scripts\LifeCtrl.cs" />
      <Compile Include="Assets\Scripts\playerMoveCtrl.cs" />
      <Compile Include="Assets\Scripts\playerSliceCtrl.cs" />
+     <Compile Include="Assets\SimpleRangedAttack.cs" />
      <Compile Include="Assets\autoRetaliate.cs" />
      <Compile Include="Assets\gameInfo.cs" />
      <Compile Include="Assets\patsyMoveControl.cs" />
      <Compile Include="Assets\patsySightControl.cs" />
      <Compile Include="Assets\shadowMoveCtrl.cs" />
+     <Compile Include="Assets\shurikenLogic.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

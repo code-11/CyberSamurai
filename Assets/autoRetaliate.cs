@@ -6,9 +6,16 @@ public class autoRetaliate : MonoBehaviour {
 	public float m_retaliationDelay=1f;
 	public float m_strikeLength=1f;
 
+	private LineRenderer mineLaser;
+
 	// Use this for initialization
 	void Start () {
-	
+		mineLaser = gameObject.AddComponent<LineRenderer> ();
+		mineLaser.material = new Material (Shader.Find ("Sprites/Default"));
+		mineLaser.material.color = Color.red;	
+		mineLaser.sortingOrder = 1;
+		mineLaser.SetWidth (0.05F, 0.05F);
+		mineLaser.SetVertexCount (2);
 	}
 	
 	// Update is called once per frame
@@ -44,7 +51,10 @@ public class autoRetaliate : MonoBehaviour {
 		hitLoc.Normalize ();
 		RaycastHit2D [] hits = Physics2D.RaycastAll (transform.position, hitLoc, m_strikeLength);
 		Vector2 there = (((Vector2) transform.position) + (hitLoc*m_strikeLength));
-		Debug.DrawLine (transform.position, there , Color.red,m_strikeLength);
+		//Debug.DrawLine (transform.position, there , Color.red,m_strikeLength);
+
+		mineLaser.SetPosition (0, transform.position);
+		mineLaser.SetPosition (1, there);
 
 		foreach (var hit in hits) {
 			if (hit.collider.gameObject.tag == "Player") {

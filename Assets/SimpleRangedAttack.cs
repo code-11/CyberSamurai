@@ -8,6 +8,10 @@ public class SimpleRangedAttack : MonoBehaviour {
 	private bool shot=false;
 	public float m_shotSpeed;
 
+	public void incrShot(){
+		shot = false;
+	}
+
 	private bool shouldFire(){
 		GameObject closePlayer = m_sight.getClosest ();
 		if (closePlayer != null) {

@@ -27,6 +27,7 @@ public class shadowMoveCtrl : MonoBehaviour {
 				if (there == null) {
 					transform.position = newPos;
 					teleports -= 1;
+					gameObject.GetComponent<SimpleRangedAttack> ().incrShot ();
 				} else {
 					Debug.Log ("Can't teleport");
 				}

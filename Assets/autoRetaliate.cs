@@ -25,7 +25,7 @@ public class autoRetaliate : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col)
 	{
-		if(col.gameObject.tag == "Player")
+		if((col.gameObject.tag == "Player")&& (this.enabled==true))
 		{
 			Vector2 hitLoc = col.contacts [0].point;
 			Vector2 hitDir = hitLoc - (Vector2) transform.position;
@@ -44,7 +44,9 @@ public class autoRetaliate : MonoBehaviour {
 	}
 	IEnumerator sliceDelay(Vector2 hitLoc) {
 		yield return new WaitForSeconds(m_retaliationDelay);
-		enemySlice (hitLoc);
+		if (hitLoc != null) {
+			enemySlice (hitLoc);
+		}
 	}
 
 	private void enemySlice(Vector2 hitLoc){

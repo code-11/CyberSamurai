@@ -7,6 +7,8 @@ public class shadowMoveCtrl : MonoBehaviour {
 
 	private int teleports = 3;
 
+	public int teleRange = 1;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,17 +21,20 @@ public class shadowMoveCtrl : MonoBehaviour {
 		GameObject closePlayer = m_sight.getClosest ();
 		if (closePlayer != null) {
 			Vector2 towardsPlayer = closePlayer.transform.position - transform.position;
-			if (towardsPlayer.magnitude < 1) {
-				Vector2 newPos = (Vector2)transform.position + towardsPlayer * 4;
+			//Debug.DrawLine (transform.position, (Vector2)transform.position + towardsPlayer*4, Color.green);
+			if (towardsPlayer.magnitude < teleRange) {
+				Vector2 newPos = (Vector2)transform.position + towardsPlayer*4;//* 4;
 				Debug.Log ("CurPos: " + transform.position + " newPos: " + newPos);
-				Collider2D there = Physics2D.OverlapCircle (newPos, GetComponent<CircleCollider2D> ().radius);
+				int roomMask= 1 << 8;//only raycast on layer 8
+				Collider2D there = Physics2D.OverlapCircle (newPos, GetComponent<CircleCollider2D> ().radius,roomMask);
 				Debug.DrawLine (transform.position, (Vector2)transform.position+newPos , Color.red);
-				if (there == null) {
+				if (there.tag=="room") {
 					transform.position = newPos;
 					teleports -= 1;
 					gameObject.GetComponent<SimpleRangedAttack> ().incrShot ();
 				} else {
-					Debug.Log ("Can't teleport");
+					transform.position = newPos;
+					GetComponent<LifeCtrl> ().instaKill ();
 				}
 			}
 			//Debug.Log ("towards:"+towardsPlayer);

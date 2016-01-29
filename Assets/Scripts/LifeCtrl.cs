@@ -6,10 +6,20 @@ public class LifeCtrl : MonoBehaviour {
 	public int m_health=1;
 	private DeathCinema m_afterlife;
 	public bool m_triggersAfterlife;
+	public bool m_gensBody;
 
 	public void dcrHealth(){
 		m_health-=1;
 		healthCheck();
+	}
+	public void instaKill(){
+		m_health = 0;
+		healthCheck();
+	}
+
+	public void genBody(){
+		GameObject body = Resources.Load ("body") as GameObject;
+		GameObject bodyObj=(GameObject) Instantiate(body, transform.position+new Vector3(0,0,1), Quaternion.identity);
 	}
 
 	private void healthCheck(){
@@ -19,7 +29,9 @@ public class LifeCtrl : MonoBehaviour {
 				gameObject.transform.GetChild(0).GetComponent<Camera> ().enabled = false;
 				m_afterlife.activateCinema (gameObject.transform.position);
 			}
-
+			if (m_gensBody) {
+				genBody ();
+			}
 			Destroy(gameObject);
 		}
 	}

@@ -30,6 +30,7 @@ public class SimpleRangedAttack : MonoBehaviour {
 	}
 
 	public void fire(){
+		Debug.Log ("Fired");
 		GameObject closePlayer = m_sight.getClosest ();
 		Vector2 towardsPlayer = closePlayer.transform.position - transform.position;
 		towardsPlayer.Normalize ();

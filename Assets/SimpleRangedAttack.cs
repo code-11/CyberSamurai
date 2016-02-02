@@ -19,12 +19,12 @@ public class SimpleRangedAttack : MonoBehaviour {
 	private bool shouldFire(){
 		GameObject closePlayer = m_sight.getClosest ();
 		if (closePlayer != null) {
-			Debug.Log ("Found player");
+			//Debug.Log ("Found player");
 			int mask= ~(1 << 8);//only raycast on all but layer 8
 			Physics2D.LinecastNonAlloc (transform.position, closePlayer.transform.position,m_hits,mask);
 			//Debug.Log ("hits "+m_hits [0].collider.gameObject.tag+" "+m_hits [1].collider.gameObject.tag);
 			if (m_hits [1] != null) {
-				Debug.Log ("Aiming at " + m_hits [1].collider.gameObject.name);
+				Debug.Log ("Aiming at " + m_hits [1].collider.gameObject.name+ "and shouldShoot is: "+m_shouldShoot);
 				return m_hits [1].collider.gameObject.tag == "Player";
 			}
 		} else {
@@ -39,12 +39,16 @@ public class SimpleRangedAttack : MonoBehaviour {
 	public void fire(){
 		//Debug.Log ("Fired");
 		GameObject closePlayer = m_sight.getClosest ();
-		Vector2 towardsPlayer = closePlayer.transform.position - transform.position;
-		towardsPlayer.Normalize ();
-		Vector2 firingPos = wherePlace (towardsPlayer);
-		m_toShoot = Resources.Load ("shuriken") as GameObject;
-		GameObject shotObj=(GameObject) Instantiate(m_toShoot, firingPos, Quaternion.identity);
-		shotObj.GetComponent<Rigidbody2D> ().velocity = towardsPlayer * m_shotSpeed;
+		if (closePlayer != null) {
+			Vector2 towardsPlayer = closePlayer.transform.position - transform.position;
+			towardsPlayer.Normalize ();
+			Vector2 firingPos = wherePlace (towardsPlayer);
+			m_toShoot = Resources.Load ("shuriken") as GameObject;
+			GameObject shotObj = (GameObject)Instantiate (m_toShoot, firingPos, Quaternion.identity);
+			shotObj.GetComponent<Rigidbody2D> ().velocity = towardsPlayer * m_shotSpeed;
+		} else {
+			Debug.Log("closePlayer is null");
+		}
 	}
 		
 	// Use this for initialization
@@ -57,7 +61,7 @@ public class SimpleRangedAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (shouldFire () && m_shouldShoot) {
-			fireDelay ();
+			StartCoroutine(fireDelay ());
 		} else {
 			//Debug.Log ("In the way");
 		}

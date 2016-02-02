@@ -5,7 +5,7 @@ public class playerSliceCtrl : MonoBehaviour {
 
 	public float m_strikeLength=1f;
 
-	private playerMoveCtrl moveRef;
+	private PlayerMoveCtrlMouse moveRef;
 	private Rigidbody2D rb;
 	private LineRenderer mineLaser;
 
@@ -18,7 +18,7 @@ public class playerSliceCtrl : MonoBehaviour {
 		mineLaser.SetVertexCount (2);
 
 		rb = GetComponent<Rigidbody2D>();
-		moveRef = GetComponent<playerMoveCtrl> ();
+		moveRef = GetComponent<PlayerMoveCtrlMouse> ();
 	}
 
 	private void slice(){
@@ -43,6 +43,7 @@ public class playerSliceCtrl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Fire1")) {
+			Debug.Log("Trying to fire");
 			slice ();
 		}
 

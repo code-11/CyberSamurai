@@ -26,6 +26,7 @@ public class LifeCtrl : MonoBehaviour {
 		if (m_health<=0){
 			if (m_triggersAfterlife) {
 				Debug.Log ("Activiating Cinema");
+				GameObject.FindWithTag ("gameInfo").GetComponent<gameInfo>().dcrPlayer ();
 				gameObject.transform.GetChild(0).GetComponent<Camera> ().enabled = false;
 				m_afterlife.activateCinema (gameObject.transform.position);
 			}

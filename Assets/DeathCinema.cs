@@ -26,7 +26,7 @@ public class DeathCinema : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (m_restartable && Input.anyKeyDown) {
-			Application.LoadLevel("testing");
+			Application.LoadLevel("lvl1");
 		}
 	}
 }

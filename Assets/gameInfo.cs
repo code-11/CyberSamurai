@@ -11,7 +11,7 @@ public class gameInfo : MonoBehaviour {
 
 	void Awake(){
 		m_playerList=new ArrayList(GameObject.FindGameObjectsWithTag("Player"));
-		Debug.Log (m_playerList.Count);
+		//Debug.Log (m_playerList.Count);
 	}
 
 	// Use this for initialization
@@ -24,5 +24,9 @@ public class gameInfo : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Application.Quit ();
 		}
+	}
+
+	public void dcrPlayer(){
+		m_playerList.Clear();
 	}
 }

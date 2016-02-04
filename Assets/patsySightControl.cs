@@ -9,17 +9,21 @@ public class patsySightControl : MonoBehaviour {
 	private GameObject m_closestPlayer;
 
 	private GameObject findClosest(){
-		float min = (((GameObject) m_allPlayers [0]).transform.position-transform.position).magnitude;
-		GameObject minPlayer = null;//(GameObject)m_allPlayers [0];
+		if (m_allPlayers.Count > 0) {
+			float min = (((GameObject)m_allPlayers [0]).transform.position - transform.position).magnitude;
+			GameObject minPlayer = null;//(GameObject)m_allPlayers [0];
 
-		foreach(GameObject player in m_allPlayers){
-			float possibleMin = (player.transform.position - transform.position).magnitude;
-			if (possibleMin <= min && possibleMin<=m_sightRange) {
-				min = possibleMin;
-				minPlayer = player;
+			foreach (GameObject player in m_allPlayers) {
+				float possibleMin = (player.transform.position - transform.position).magnitude;
+				if (possibleMin <= min && possibleMin <= m_sightRange) {
+					min = possibleMin;
+					minPlayer = player;
+				}
 			}
+			return minPlayer;
+		} else {
+			return null;
 		}
-		return minPlayer;
 	}
 
 	public GameObject getClosest(){

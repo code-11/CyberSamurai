@@ -45,19 +45,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DeathCinema.cs" />
-     <Compile Include="Assets\PlayerMoveCtrlMouse.cs" />
+     <Compile Include="Assets\DoorTrigger.cs" />
+     <Compile Include="Assets\Scripts\DeathCinema.cs" />
+     <Compile Include="Assets\Scripts\DoorOpener.cs" />
      <Compile Include="Assets\Scripts\LifeCtrl.cs" />
+     <Compile Include="Assets\Scripts\PlayerMoveCtrlMouse.cs" />
+     <Compile Include="Assets\Scripts\SimpleRangedAttack.cs" />
+     <Compile Include="Assets\Scripts\UrDeathHistorian.cs" />
+     <Compile Include="Assets\Scripts\UrPlayerCtrl.cs" />
+     <Compile Include="Assets\Scripts\autoRetaliate.cs" />
+     <Compile Include="Assets\Scripts\gameInfo.cs" />
+     <Compile Include="Assets\Scripts\patsyMoveControl.cs" />
+     <Compile Include="Assets\Scripts\patsySightControl.cs" />
      <Compile Include="Assets\Scripts\playerMoveCtrl.cs" />
      <Compile Include="Assets\Scripts\playerSliceCtrl.cs" />
-     <Compile Include="Assets\SimpleRangedAttack.cs" />
-     <Compile Include="Assets\UrPlayerCtrl.cs" />
-     <Compile Include="Assets\autoRetaliate.cs" />
-     <Compile Include="Assets\gameInfo.cs" />
-     <Compile Include="Assets\patsyMoveControl.cs" />
-     <Compile Include="Assets\patsySightControl.cs" />
-     <Compile Include="Assets\shadowMoveCtrl.cs" />
-     <Compile Include="Assets\shurikenLogic.cs" />
+     <Compile Include="Assets\Scripts\shadowMoveCtrl.cs" />
+     <Compile Include="Assets\Scripts\shurikenLogic.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

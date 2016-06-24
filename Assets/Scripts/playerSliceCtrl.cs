@@ -4,10 +4,12 @@ using System.Collections;
 public class playerSliceCtrl : MonoBehaviour {
 
 	public float m_strikeLength=1f;
+	public float m_shotDelay;
 
 	private PlayerMoveCtrlMouse moveRef;
 	private Rigidbody2D rb;
 	private LineRenderer mineLaser;
+	private bool m_canSlice;
 
 	void Start () {
 		mineLaser = gameObject.AddComponent<LineRenderer> ();
@@ -19,11 +21,13 @@ public class playerSliceCtrl : MonoBehaviour {
 
 		rb = GetComponent<Rigidbody2D>();
 		moveRef = GetComponent<PlayerMoveCtrlMouse> ();
+
+		m_canSlice = true;
 	}
 
 	private void slice(){
 		Vector2 forward = moveRef.getLastHeading ();
-		Debug.Log (forward);
+		//Debug.Log (forward);
 		RaycastHit2D [] hits = Physics2D.RaycastAll (transform.position, forward, m_strikeLength);
 		Vector2 there = (((Vector2) transform.position) + (forward*m_strikeLength));
 		//Debug.DrawLine (transform.position, there , Color.red,.5f);
@@ -39,13 +43,18 @@ public class playerSliceCtrl : MonoBehaviour {
 			}
 		}
 	}
+	IEnumerator sliceDelay(){
+		m_canSlice = false;
+		yield return new WaitForSeconds(m_shotDelay);
+		m_canSlice = true;
+	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetButtonDown ("Fire1") && m_canSlice) {
 			Debug.Log("Trying to fire");
 			slice ();
+			StartCoroutine(sliceDelay ());
 		}
-
 	}
 }

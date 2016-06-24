@@ -45,9 +45,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DoorTrigger.cs" />
+     <Compile Include="Assets\Scripts\BombCtrl.cs" />
      <Compile Include="Assets\Scripts\DeathCinema.cs" />
      <Compile Include="Assets\Scripts\DoorOpener.cs" />
+     <Compile Include="Assets\Scripts\DoorTrigger.cs" />
      <Compile Include="Assets\Scripts\LifeCtrl.cs" />
      <Compile Include="Assets\Scripts\PlayerMoveCtrlMouse.cs" />
      <Compile Include="Assets\Scripts\SimpleRangedAttack.cs" />

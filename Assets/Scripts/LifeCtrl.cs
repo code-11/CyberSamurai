@@ -7,6 +7,7 @@ public class LifeCtrl : MonoBehaviour {
 	private DeathCinema m_afterlife;
 	public bool m_triggersAfterlife;
 	public bool m_gensBody;
+	public bool m_gensExplode;
 
 	public void dcrHealth(){
 		m_health-=1;
@@ -22,6 +23,11 @@ public class LifeCtrl : MonoBehaviour {
 		GameObject bodyObj=(GameObject) Instantiate(body, transform.position+new Vector3(0,0,1), Quaternion.identity);
 	}
 
+	public void genExplode(){
+		GameObject bomb = Resources.Load ("bomb") as GameObject;
+		GameObject bombObj=(GameObject) Instantiate(bomb, transform.position+new Vector3(0,0,1), Quaternion.identity);
+	}
+
 	private void healthCheck(){
 		if (m_health<=0){
 			if (m_triggersAfterlife) {
@@ -29,6 +35,9 @@ public class LifeCtrl : MonoBehaviour {
 				GameObject.FindWithTag ("gameInfo").GetComponent<gameInfo>().dcrPlayer ();
 				gameObject.transform.GetChild(0).GetComponent<Camera> ().enabled = false;
 				m_afterlife.activateCinema (gameObject.transform.position);
+			}
+			if (m_gensExplode) {
+				genExplode ();
 			}
 			if (m_gensBody) {
 				genBody ();
